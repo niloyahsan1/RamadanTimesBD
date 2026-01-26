@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// ===== Ramadan 2026 dates =====
-	const RAMADAN_START = new Date("2026-02-18");
-	const RAMADAN_END = new Date("2026-03-19");
+	const RAMADAN_START = new Date("2026-02-19");
+	const RAMADAN_END = new Date("2026-03-20");
 
 	/* ===== fetch Feb + Mar 2026 ===== */
 	Promise.all([
