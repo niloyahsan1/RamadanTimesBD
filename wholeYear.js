@@ -99,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${formatBanglaDate(day.date.gregorian.date)}</td>
         <td>${toBangla(to12(cleanTime(day.timings.Fajr)))}</td>
         <td>${toBangla(to12(cleanTime(day.timings.Maghrib)))}</td>
-        <td><span class="badge ${badge}">${stage}</span></td>
       </tr>
     `;
 			});
