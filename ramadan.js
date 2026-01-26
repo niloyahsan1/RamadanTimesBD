@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+	/* ===== DARK MODE TOGGLE ===== */
+	const darkBtn = document.getElementById("darkToggle");
+
+	darkBtn.addEventListener("click", () => {
+		document.body.classList.toggle("dark");
+		darkBtn.innerText = document.body.classList.contains("dark")
+			? "☀ Light"
+			: "🌙 Dark";
+	});
+
 	const city = "Dhaka";
 	const country = "Bangladesh";
 
@@ -129,7 +139,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		const maghrib = cleanTime(todayData.timings.Maghrib);
 
 		document.getElementById("sehriToday").innerText = toBangla(to12(fajr));
-		document.getElementById("iftarToday").innerText = toBangla(to12(maghrib));
+		document.getElementById("iftarToday").innerText = toBangla(
+			to12(maghrib),
+		);
 
 		function updateCountdown() {
 			const now = new Date();
