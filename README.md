@@ -8,11 +8,19 @@ Ramadan Times BD is a web-based application designed to provide accurate prayer 
 
 - **Daily Ramadan Prayer Times**: Displays accurate prayer times for each day of Ramadan.
 - **Ramadan Month Utilities**: Includes additional features for the holy month of Ramadan such as Iftar and Seheri timings.
-- **User-Friendly Interface**: Simple and intuitive design for easy navigation.
+- **User Friendly Interface**: Simple and intuitive design for easy navigation.
+- **Mobile Friendly Design**: The application is fully responsive and works seamlessly on mobile devices.
+- **Dark Mode Support**: The application includes a dark mode for better usability in low light environments.
+
+## Live Preview
+
+Check out the live preview of the application here: [Ramadan Times BD](https://ramadantimesbd.vercel.app/)
 
 ## Demo Screenshot
 
-![Demo Screenshot](demo-screenshot.png)
+<p align="center">
+  <img src="./assets/demo.png" width="800" />
+</p>
 
 ## Project Structure
 
@@ -20,8 +28,8 @@ The project consists of the following files:
 
 - **index.html**: The main HTML file that serves as the entry point for the application.
 - **styles.css**: Contains the styling rules for the application.
-- **ramadan.js**: Handles the logic for displaying Ramadan-specific prayer times.
-- **wholeYear.js**: Includes utilities and features for year-round use.
+- **ramadan.js**: Handles the logic for displaying Ramadan specific prayer times.
+- **wholeYear.js**: Includes utilities and features for year round use.
 
 ## How to Use
 
@@ -48,7 +56,3 @@ This project was developed by [Niloy Ahsan](https://github.com/niloyahsan1).
 ## License
 
 This project is licensed under the MIT License. Feel free to use, modify, and distribute it as per the license terms.
-
-## Live Preview
-
-Check out the live preview of the application here: [Ramadan Times BD](https://ramadantimesbd.vercel.app/)
