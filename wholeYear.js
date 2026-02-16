@@ -6,8 +6,24 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.body.classList.toggle("dark");
 		darkBtn.innerText = document.body.classList.contains("dark")
 			? "☀ Light"
-			: "🌙 Dark";
+			: "⏾ Dark";
 	});
+
+	/* ===== LIVE CURRENT TIME ===== */
+	function updateCurrentTime() {
+		const now = new Date();
+
+		const time = now.toLocaleTimeString("bn-BD", {
+			hour: "numeric",
+			minute: "numeric",
+			second: "numeric",
+		});
+
+		document.getElementById("currentTime").innerText = time;
+	}
+
+	updateCurrentTime();
+	setInterval(updateCurrentTime, 1000);
 
 	const city = "Dhaka";
 	const country = "Bangladesh";
@@ -149,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				// After iftar
 				else {
 					document.getElementById("countdown").innerText =
-						"ইফতার সময় হয়েছে 🌙";
+						"ইফতারের সময় হয়েছে 🌙";
 					return;
 				}
 

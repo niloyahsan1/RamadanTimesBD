@@ -1,333 +1,354 @@
 body {
 	margin: 0;
-	background: #f6f8f7;
-	font-family: Inter, sans-serif;
-	color: #1f2937;
+	background: #f3f5f2;
+	font-family: "Inter", sans-serif;
+	color: #2f2f2f;
 }
 
 .container {
-	max-width: 900px;
+	max-width: 1000px;
 	margin: auto;
-	padding: 30px 20px;
+	padding: 40px 20px;
 }
 
-/* ===== DARK MODE ===== */
-#darkToggle {
-	padding: 6px 12px;
-	border-radius: 6px;
-	border: 1px solid #ccc;
-	background: #fff;
+/* ==============================
+   TOP BAR
+============================== */
+
+.top-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 35px;
+}
+
+/* ==============================
+   CURRENT TIME BOX
+============================== */
+
+#currentTime {
+	font-weight: 600;
+	font-size: 15px;
+	color: #2f2f2f;
+	padding: 8px 14px;
+	border-radius: 12px;
+	border: 1px solid #cbd5c0;
+	background: linear-gradient(180deg,
+			#e8efe6 0%,
+			#d7e2d4 100%);
 	cursor: pointer;
 }
 
-/* ===== FIX DARK MODE TABLE MESS ===== */
-/* ===== DARK MODE ===== */
-body.dark {
-	background: #0f172a;
-	color: #e5e7eb;
+#darkToggle {
+	padding: 8px 16px;
+	border-radius: 12px;
+	border: 1px solid #cbd5c0;
+	background: linear-gradient(180deg,
+			#e8efe6 0%,
+			#d7e2d4 100%);
+	cursor: pointer;
+	font-weight: 500;
+	transition: 0.2s ease;
 }
 
-body.dark .container {
-	background: #020617;
+#darkToggle:hover {
+	transform: translateY(-1px);
 }
 
-body.dark .card {
-	background: #020617;
-	border: 1px solid #1e293b;
-}
+/* ==============================
+   HERO
+============================== */
 
-body.dark h1,
-body.dark h2 {
-	color: #e5e7eb;
-}
-
-body.dark #darkToggle {
-	background: #020617;
-	color: #e5e7eb;
-	border-color: #1e293b;
-}
-
-body.dark table {
-	background: #020617;
-	color: #e5e7eb;
-	border-collapse: collapse;
-}
-
-body.dark th {
-	background: #020617;
-	color: #f8fafc;
-	border-bottom: 1px solid #1e293b;
-}
-
-body.dark td {
-	color: #e5e7eb;
-	border-bottom: 1px solid #1e293b;
-}
-
-body.dark tr {
-	background: transparent;
-}
-
-body.dark .stage-rahmah {
-	background: rgba(34, 197, 94, 0.12);
-}
-
-body.dark .stage-maghfirah {
-	background: rgba(234, 179, 8, 0.12);
-}
-
-body.dark .stage-nijat {
-	background: rgba(239, 68, 68, 0.12);
-}
-
-body.dark .badge {
-	background: #020617;
-	color: #f8fafc;
-	border: 1px solid #334155;
-}
-
-body.dark .small,
-body.dark .label {
-	color: #cbd5f5;
-}
-
-body.dark .time {
-	color: #34d399;
-}
-
-body.dark .countdown {
-	color: #f87171;
-}
-
-h1,
-h2 {
+.hero {
 	text-align: center;
-	color: #0f5132;
+	margin-bottom: 4px;
+}
+
+.hero h1 {
+	font-size: 40px;
+	margin: 0;
+	font-weight: 700;
+	color: #2f2f2f;
+}
+
+.location {
+	margin-top: 10px;
+	font-size: 16px;
+	color: #6b7280;
+}
+
+/* ==============================
+   CARDS
+============================== */
+
+.card-dua {
+	/* background: #e4ece2; */
+	background: linear-gradient(180deg,
+			#e8efe6 0%,
+			#d7e2d4 100%);
+	border-radius: 20px;
+	padding: 25px;
+	margin-bottom: 30px;
+}
+
+.card-time {
+	/* background: #e4ece238; */
+	border-radius: 20px;
+	padding: 25px;
+	margin-top: -10px;
+	margin-bottom: 20px;
+}
+
+.card-table {
+	background: #e4ece2;
+	/* background: linear-gradient(180deg,
+			#e8efe6 0%,
+			#d7e2d4 100%); */
+	border-radius: 20px;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+.section-title {
+	text-align: center;
+	margin-bottom: 25px;
+	font-weight: 600;
+	font-size: 22px;
+}
+
+/* ==============================
+   TODAY SECTION
+============================== */
+
+.today-date {
+	text-align: center;
+	font-size: 18px;
+	color: #53575e;
+	margin-bottom: -8px;
+}
+
+.today-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 25px;
+	margin-top: 20px;
+}
+
+.time-box {
+	/* background: #d7e2d4; */
+	background: linear-gradient(180deg,
+			#e8efe6 0%,
+			#d7e2d4 100%);
+	border-radius: 18px;
+	padding: 25px;
+	text-align: center;
+}
+
+.small {
+	font-size: 18px;
+	font-weight: 400;
+	color: #4b5563;
 }
 
 .time {
-	font-size: 26px;
-	font-weight: 600;
-	color: #065f46;
-	text-align: center;
+	font-size: 40px;
+	font-weight: 700;
+	color: #3f7d3a;
+	margin-top: 8px;
 }
 
-#todayDate {
+.countdown-wrapper {
 	text-align: center;
-	font-size: 16px;
-	color: #374151;
-	margin-bottom: 10px;
-	font-weight: 500;
+	margin-top: 28px;
 }
 
 .countdown {
-	font-size: 20px;
-	font-weight: bold;
-	color: #991b1b;
+	font-size: 22px;
+	font-weight: 600;
+	color: #b91c1c;
 }
 
-.card {
-	background: #ffffff;
-	border-radius: 14px;
-	padding: 25px;
-	margin-bottom: 30px;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+/* ==============================
+   DUAS
+============================== */
+
+.dua-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 40px;
+}
+
+.dua-box {
+	text-align: center;
 }
 
 .dua-title {
 	font-weight: 600;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	font-size: 20px;
 }
 
 .arabic {
 	font-family: "Noto Naskh Arabic", serif;
-	font-size: 22px;
+	font-size: 24px;
 	direction: rtl;
-	text-align: right;
-	margin: 10px 0;
+	text-align: center;
+	margin: 15px 0;
 }
 
-.small {
-	font-size: 14px;
-	color: #4b5563;
+/* ==============================
+   TABLE
+============================== */
+
+.table-wrapper {
+	margin-top: 20px;
 }
 
 table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 14px;
-}
-
-th,
-td {
-	padding: 10px;
-	border-bottom: 1px solid #e5e7eb;
-	text-align: center;
+	background: #ffffff;
+	border-radius: 12px;
+	overflow: hidden;
 }
 
 th {
-	background: #0f5132;
-	color: #fff;
+	background: #3f7d3a;
+	color: white;
+	padding: 14px;
+	font-size: 16px;
 }
 
-.stage-rahmah {
-	background: #ecfdf5;
-}
-.stage-maghfirah {
-	background: #fefce8;
-}
-.stage-nijat {
-	background: #fef2f2;
-}
-
-.badge {
-	padding: 4px 10px;
-	border-radius: 20px;
-	font-size: 12px;
-	font-weight: 600;
+td {
+	padding: 12px;
+	font-size: 16px;
+	font-weight: normal;
+	border-bottom: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	text-align: center;
 }
 
-.rahmah {
-	background: #bbf7d0;
-}
-.maghfirah {
-	background: #fde68a;
-}
-.nijat {
-	background: #fecaca;
+th:last-child,
+td:last-child {
+	border-right: none;
 }
 
-/* =================================================
-   MOBILE & TABLET RESPONSIVENESS
-   (keeps desktop design intact)
-   ================================================= */
+/* ==============================
+   DARK MODE
+============================== */
 
-/* Tablets (<= 1024px) */
-@media (max-width: 1024px) {
-	.container {
-		max-width: 100%;
-		padding: 24px 16px;
+body.dark {
+	background: #111510;
+	color: #C4C4C4;
+}
+
+/* HERO */
+body.dark .hero h1 {
+	color: #C4C4C4;
+}
+
+body.dark .today-date {
+	color: #e5e7ebd3;
+}
+
+body.dark .location {
+	color: #9ca3af;
+}
+
+/* TOP BAR ITEMS */
+body.dark #currentTime,
+body.dark #darkToggle {
+	background: linear-gradient(180deg,
+			rgba(28, 51, 35, 0.95) 0%,
+			rgba(17, 29, 21, 0.98) 100%);
+	color: #C4C4C4;
+	border: 1px solid rgba(74, 222, 128, 0.15);
+}
+
+/* CARD CONTAINER */
+body.dark .card-dua,
+body.dark .card-table,
+body.dark .time-box {
+	background: #1D231D;
+}
+
+/* MAIN TIME COLOR */
+body.dark .time {
+	color: #428038;
+}
+
+/* COUNTDOWN */
+body.dark .countdown {
+	color: #ef4444;
+}
+
+/* SECONDARY TEXT */
+body.dark .small {
+	color: #9ca3af;
+}
+
+/* DUA TITLES */
+body.dark .dua-title {
+	color: #C4C4C4;
+}
+
+/* ARABIC TEXT */
+body.dark .arabic {
+	color: #C4C4C4;
+}
+
+/* TABLE */
+body.dark table {
+	background: #0D0D0D;
+}
+
+body.dark th {
+	background: #173a28;
+	color: #C4C4C4;
+}
+
+body.dark td {
+	border-bottom: 1px solid rgba(74, 222, 128, 0.08);
+	border-right: 1px solid rgba(74, 222, 128, 0.08);
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 900px) {
+
+	.today-grid,
+	.dua-grid {
+		grid-template-columns: 1fr;
 	}
-}
 
-/* Large phones / small tablets (<= 768px) */
-@media (max-width: 768px) {
-	h1 {
-		font-size: 22px;
-	}
-
-	h2 {
-		font-size: 18px;
-	}
-
-	#todayDate {
-		font-size: 15px;
-	}
-
-	.card {
-		padding: 20px;
-		margin-bottom: 24px;
+	.hero h1 {
+		font-size: 32px;
 	}
 
 	.time {
-		font-size: 24px;
+		font-size: 34px;
+	}
+}
+
+@media (max-width: 500px) {
+	.container {
+		padding: 25px 15px;
 	}
 
-	.countdown {
-		font-size: 18px;
+	.card {
+		padding: 25px;
 	}
 
-	.arabic {
-		font-size: 20px;
-	}
-
-	table {
-		font-size: 13px;
+	.time {
+		font-size: 28px;
 	}
 
 	th,
 	td {
-		padding: 8px 6px;
+		font-size: 12px;
+		padding: 8px;
 	}
 }
-
-/* Phones (<= 480px) */
-@media (max-width: 480px) {
-	body {
-		padding: 0;
-	}
-
-	h1 {
-		font-size: 26px;
-	}
-
-	h2 {
-		font-size: 17px;
-	}
-
-	.container {
-		padding: 16px 12px;
-	}
-
-	.card {
-		padding: 16px;
-		border-radius: 12px;
-	}
-
-	.time {
-		font-size: 22px;
-	}
-
-	.countdown {
-		font-size: 16px;
-	}
-
-	.arabic {
-		font-size: 20px;
-		line-height: 1.8;
-	}
-
-	.small {
-		font-size: 17px;
-		line-height: 1.6;
-	}
-
-	table {
-		font-size: 17px;
-	}
-
-	th,
-	td {
-		padding: 6px 4px;
-	}
-
-	.badge {
-		font-size: 11px;
-		padding: 3px 8px;
-	}
-}
-
-/* Very small phones (<= 360px) */
-@media (max-width: 360px) {
-	h1 {
-		font-size: 18px;
-	}
-
-	h2 {
-		font-size: 16px;
-	}
-
-	.time {
-		font-size: 20px;
-	}
-
-	.countdown {
-		font-size: 15px;
-	}
-
-	table {
-		font-size: 11px;
-	}
-}
-
-
