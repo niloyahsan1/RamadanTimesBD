@@ -441,6 +441,29 @@ body.dark .footer-small {
 		padding: 6px;
 	}
 
+	/* Dua font resize (Mobile) */
+	.card-dua {
+		padding: 10px;
+	}
+
+	.dua-title {
+		font-size: 18px;
+	}
+
+	.arabic {
+		font-size: 16px;
+		line-height: 1.8;
+	}
+
+	.card-dua .small {
+		font-size: 16px;
+		line-height: 1.6;
+	}
+
+	.dua-grid {
+		gap: 20px;
+	}
+
 	/* Table compact */
 	table {
 		font-size: 16px;
