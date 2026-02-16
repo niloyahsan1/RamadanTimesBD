@@ -23,7 +23,7 @@ body {
 	width: 100%;
 	z-index: 1000;
 	backdrop-filter: blur(10px);
-	background: rgba(243, 245, 242, 0.9);
+	background: rgba(243, 245, 242, 0.4);
 	border-bottom: 1px solid #e0e0e0;
 }
 
@@ -254,7 +254,7 @@ body.dark {
 }
 
 body.dark .navbar {
-	background: rgba(17, 21, 16, 0.95);
+	background: rgba(17, 21, 16, 0.4);
 	border-bottom: 1px solid #1f2a1f;
 }
 
