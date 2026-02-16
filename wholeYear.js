@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	darkBtn.addEventListener("click", () => {
 		document.body.classList.toggle("dark");
 		darkBtn.innerText = document.body.classList.contains("dark")
-			? "☀ Light"
-			: "⏾ Dark";
+			? "☀"
+			: "⏾";
 	});
 
 	/* ===== LIVE CURRENT TIME ===== */
