@@ -232,8 +232,13 @@ td:last-child {
 	border-right: none;
 }
 
+.today-row td:first-child {
+	border-left: 4px solid #3f7d3a;
+}
+
 .today-row {
 	background: rgba(63, 125, 58, 0.08);
+	box-shadow: inset 0 0 8px rgba(66, 128, 56, 0.4);
 }
 
 .today-row td {
@@ -334,8 +339,14 @@ body.dark td {
 }
 
 body.dark .today-row {
-	background: rgba(66, 128, 56, 0.15);
+	background: #1f2a1f;
+	box-shadow: inset 0 0 8px rgba(66, 128, 56, 0.4);
 }
+
+body.dark .today-row td:first-child {
+	border-left: 4px solid #4ea34f;
+}
+
 
 body.dark .footer {
 	background: #1D231D;

@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	const month = now.getMonth() + 1;
 	const year = now.getFullYear();
 
-	/* ===== helpers ===== */
+	/* ===== HELPERS ===== */
+
 	function cleanTime(t) {
 		return t.split(" ")[0];
 	}
 
-	// 24h → 12h
 	function to12(t) {
 		let [h, m] = t.split(":");
 		h = parseInt(h, 10);
@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		return `${h}:${m} ${ap}`;
 	}
 
-	// English → Bangla digits
 	function toBangla(num) {
 		const map = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
 		return num
@@ -55,14 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			.join("");
 	}
 
-	// format countdown in Bangla
 	function formatBanglaTime(h, m, s) {
 		return `${toBangla(h)} ঘন্টা ${toBangla(m)} মিনিট ${toBangla(s)} সেকেন্ড`;
 	}
 
-	// format date and month in Bangla
 	function formatBanglaDate(dateStr) {
-		// dateStr is like "18-02-2026"
 		const [dd, mm, yyyy] = dateStr.split("-");
 		const dateObj = new Date(`${yyyy}-${mm}-${dd}`);
 
@@ -72,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	// ===== SHOW TODAY DATE (BANGLA) =====
+	/* ===== SHOW TODAY DATE ===== */
 	const todayDateText = new Date().toLocaleDateString("bn-BD", {
 		weekday: "long",
 		year: "numeric",
@@ -85,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		todayDateEl.innerText = todayDateText;
 	}
 
-	/* ===== fetch calendar ===== */
+	/* ===== FETCH CALENDAR ===== */
 	fetch(
 		`https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=1&school=1&month=${month}&year=${year}`,
 	)
@@ -93,44 +89,43 @@ document.addEventListener("DOMContentLoaded", function () {
 		.then((d) => {
 			/* ===== MONTHLY TABLE ===== */
 			let html = "";
+
+			const todayDateNumber = new Date().getDate();
+
 			d.data.forEach((day, i) => {
-				let stage, cls, badge;
-				if (i < 10) {
-					stage = "রহমাহ";
-					cls = "stage-rahmah";
-					badge = "rahmah";
-				} else if (i < 20) {
-					stage = "মাগফিরাহ";
-					cls = "stage-maghfirah";
-					badge = "maghfirah";
-				} else {
-					stage = "নাজাত";
-					cls = "stage-nijat";
-					badge = "nijat";
-				}
+				let cls;
+
+				if (i < 10) cls = "stage-rahmah";
+				else if (i < 20) cls = "stage-maghfirah";
+				else cls = "stage-nijat";
+
+				// Check if this is today
+				const isToday = i + 1 === todayDateNumber;
 
 				html += `
-      <tr class="${cls}">
-		<td>${toBangla(i + 1)}</td>
-        <td>${formatBanglaDate(day.date.gregorian.date)}</td>
-        <td>${toBangla(to12(cleanTime(day.timings.Fajr)))}</td>
-        <td>${toBangla(to12(cleanTime(day.timings.Maghrib)))}</td>
-      </tr>
-    `;
+					<tr class="${cls} ${isToday ? "today-row" : ""}">
+						<td>${toBangla(i + 1)}</td>
+						<td>${formatBanglaDate(day.date.gregorian.date)}</td>
+						<td>${toBangla(to12(cleanTime(day.timings.Fajr)))}</td>
+						<td>${toBangla(to12(cleanTime(day.timings.Maghrib)))}</td>
+					</tr>
+				`;
 			});
 
 			document.getElementById("tableBody").innerHTML = html;
 
 			/* ===== TODAY LOGIC ===== */
-			const todayIndex = new Date().getDate() - 1;
-			const today = d.data[todayIndex].timings;
 
-			const fajr = cleanTime(today.Fajr);
-			const maghrib = cleanTime(today.Maghrib);
+			const todayIndex = todayDateNumber - 1;
+			const todayData = d.data[todayIndex].timings;
+
+			const fajr = cleanTime(todayData.Fajr);
+			const maghrib = cleanTime(todayData.Maghrib);
 
 			document.getElementById("sehriToday").innerText = toBangla(
 				to12(fajr),
 			);
+
 			document.getElementById("iftarToday").innerText = toBangla(
 				to12(maghrib),
 			);
@@ -138,32 +133,23 @@ document.addEventListener("DOMContentLoaded", function () {
 			function updateCountdown() {
 				const now = new Date();
 
-				// Sehri target (Fajr)
 				const [fh, fm] = fajr.split(":");
 				const sehriTime = new Date();
 				sehriTime.setHours(fh, fm, 0, 0);
 
-				// Iftar target (Maghrib)
 				const [mh, mm] = maghrib.split(":");
 				const iftarTime = new Date();
 				iftarTime.setHours(mh, mm, 0, 0);
 
 				let target, label;
 
-				// Night → Sehri countdown
 				if (now < sehriTime) {
 					target = sehriTime;
 					label = "সেহরির বাকি সময়";
-				}
-
-				// Day → Iftar countdown
-				else if (now < iftarTime) {
+				} else if (now < iftarTime) {
 					target = iftarTime;
 					label = "ইফতারের বাকি সময়";
-				}
-
-				// After iftar
-				else {
+				} else {
 					document.getElementById("countdown").innerText =
 						"ইফতারের সময় হয়েছে 🌙";
 					return;
@@ -175,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const s = Math.floor((diff % 60000) / 1000);
 
 				document.getElementById("countdown").innerText =
-					`${label} \n ${formatBanglaTime(h, m, s)}`;
+					`${label}\n${formatBanglaTime(h, m, s)}`;
 			}
 
 			updateCountdown();
