@@ -23,7 +23,7 @@ Built with simplicity, performance, and accessibility in mind.
 
 ## 🚀 Live Preview
 
-🔗 Check out the live preview of the application here: [Ramadan Times BD](https://ramadantimesbd.vercel.app/)(https://ramadantimesbd.vercel.app/)
+🔗 Check out the live preview of the application here: [Ramadan Times BD](https://ramadantimesbd.vercel.app/)
 
 ---
 
@@ -76,7 +76,6 @@ Built with simplicity, performance, and accessibility in mind.
 
 ## 👨‍💻 Author
 
-**Niloy Ahsan**
 This project was developed by [Niloy Ahsan](https://github.com/niloyahsan1).
 
 ---
