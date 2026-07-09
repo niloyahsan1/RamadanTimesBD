@@ -957,12 +957,15 @@ body.dark .complete-msg {
 
 .prayer-card-badge {
 	position: absolute;
-	top: 12px;
-	right: 12px;
+	top: 0;
+	right: 0;
 	font-size: 11px;
 	font-weight: 700;
-	padding: 3px 8px;
-	border-radius: 100px;
+	padding: 4px 10px;
+	border-top-right-radius: 18px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
 	text-transform: uppercase;
 }
 
@@ -1100,33 +1103,37 @@ body.dark .prayer-card.next .prayer-card-badge {
 		padding: 0 5px;
 	}
 	.prayer-card {
-		padding: 10px 4px;
+		padding: 14px 8px;
 		flex-direction: column;
 		justify-content: center;
-		gap: 4px;
+		gap: 6px;
 		text-align: center;
 	}
 	.prayer-card-icon {
 		margin-bottom: 2px;
-		width: 24px;
-		height: 24px;
+		width: 32px;
+		height: 32px;
 	}
 	.prayer-card-info {
 		align-items: center;
 		gap: 2px;
 	}
 	.prayer-card-name {
-		font-size: 13px;
+		font-size: 15px;
 		margin-bottom: 1px;
 	}
 	.prayer-card-time {
-		font-size: 14px;
+		font-size: 17px;
 	}
 	.prayer-card-badge {
 		position: absolute;
-		top: 4px;
-		right: 4px;
-		font-size: 8.5px;
-		padding: 1px 4px;
+		top: 0;
+		right: 0;
+		font-size: 9.5px;
+		padding: 3px 8px;
+		border-top-right-radius: 18px;
+		border-bottom-left-radius: 10px;
+		border-top-left-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 }
