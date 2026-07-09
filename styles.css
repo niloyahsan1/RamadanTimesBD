@@ -73,7 +73,8 @@ body {
 	justify-content: center;
 }
 
-.nav-left, .nav-right {
+.nav-left,
+.nav-right {
 	display: flex;
 	gap: 10px;
 	align-items: center;
@@ -522,7 +523,8 @@ body.dark .footer-small {
 		padding: 10px 10px;
 	}
 
-	.nav-left, .nav-right {
+	.nav-left,
+	.nav-right {
 		gap: 6px;
 	}
 
@@ -667,6 +669,8 @@ body.dark .footer-small {
 	-ms-user-select: none;
 	border-radius: 50%;
 	transition: transform 0.1s ease;
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
 }
 
 .progress-ring:active {
@@ -828,22 +832,27 @@ body.dark .complete-msg {
 /* Tasbih Responsive */
 @media (max-width: 600px) {
 	.progress-ring {
-		width: 240px;
-		height: 240px;
+		width: 320px;
+		height: 320px;
 	}
+
 	.tasbih-stats {
 		gap: 12px;
 		padding: 0 10px;
 	}
+
 	.tasbih-stats-card {
 		padding: 10px;
 	}
+
 	.tasbih-stats-card .value {
 		font-size: 18px;
 	}
+
 	.zikr {
 		font-size: 20px;
 	}
+
 	.count {
 		font-size: 26px;
 	}
@@ -1087,23 +1096,28 @@ body.dark .prayer-card.next .prayer-card-badge {
 	.container {
 		padding: 10px 8px;
 	}
+
 	.prayer-hero {
 		padding: 12px 10px;
 		margin-bottom: 12px;
 	}
+
 	.prayer-hero h2 {
 		font-size: 20px;
 	}
+
 	.prayer-hero .countdown-time {
 		font-size: 15px;
 		padding: 4px 12px;
 	}
+
 	.prayer-grid {
 		grid-template-columns: 1fr;
 		gap: 8px;
 		margin: 12px auto !important;
 		padding: 0 5px;
 	}
+
 	.prayer-card {
 		padding: 14px 16px;
 		flex-direction: column;
@@ -1111,17 +1125,21 @@ body.dark .prayer-card.next .prayer-card-badge {
 		gap: 6px;
 		text-align: center;
 	}
+
 	.prayer-card-info {
 		align-items: center;
 		gap: 2px;
 	}
+
 	.prayer-card-name {
 		font-size: 18px;
 		margin-bottom: 1px;
 	}
+
 	.prayer-card-time {
 		font-size: 22px;
 	}
+
 	.prayer-card-badge {
 		position: absolute;
 		top: 0;
