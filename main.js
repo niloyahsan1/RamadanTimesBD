@@ -39,7 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentTimeEl) {
         const updateCurrentTime = () => {
             const now = new Date();
-            currentTimeEl.innerText = now.toLocaleTimeString("bn-BD");
+            currentTimeEl.innerText = now.toLocaleTimeString("bn-BD", {
+                hour: "numeric",
+                minute: "2-digit"
+            });
         };
         updateCurrentTime();
         setInterval(updateCurrentTime, 1000);

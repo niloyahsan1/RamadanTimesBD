@@ -59,7 +59,7 @@
 
         <!-- Progress Ring Tapper -->
         <div class="progress-ring" id="circle" title="জপ করতে এখানে চাপুন">
-            <svg width="280" height="280">
+            <svg width="280" height="280" viewBox="0 0 280 280">
                 <circle class="bg" cx="140" cy="140" r="120" />
                 <circle class="progress" id="progressCircle" cx="140" cy="140" r="120" />
             </svg>
@@ -149,7 +149,15 @@
         }
 
         circle.addEventListener("click", () => {
-            if (isCompleted) return;
+            if (isCompleted) {
+                // Restart for another cycle!
+                isCompleted = false;
+                completeMsg.style.display = "none";
+                circle.classList.remove("disabled");
+                currentZikr = 0;
+                count = 0; // Starts from 1 below
+                cycleTotal++;
+            }
 
             count++;
             sessionTotal++;
