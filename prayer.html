@@ -156,7 +156,8 @@
                 const m = Math.floor((diff % 3600000) / 60000);
                 const s = Math.floor((diff % 60000) / 1000);
                 
-                document.getElementById("prayerCountdown").innerText = `পরবর্তী নামাজ: ${nextPrayer.name} (বাকি ${toBangla(h)} ঘণ্টা ${toBangla(m)} মিনিট ${toBangla(s)} সেকেন্ড)`;
+                const pad = (num) => num.toString().padStart(2, '0');
+                document.getElementById("prayerCountdown").innerText = `পরবর্তী নামাজ: ${nextPrayer.name} (${toBangla(pad(h))}:${toBangla(pad(m))}:${toBangla(pad(s))})`;
                 
                 // Render Cards
                 let cardsHtml = "";

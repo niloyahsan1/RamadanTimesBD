@@ -178,9 +178,11 @@ body {
 }
 
 .countdown {
-	font-size: 22px;
-	font-weight: 600;
+	font-size: 26px;
+	font-weight: 700;
 	color: #b91c1c;
+	margin-top: 15px;
+	text-align: center;
 }
 
 
@@ -546,7 +548,7 @@ body.dark .footer-small {
 	}
 
 	.countdown {
-		font-size: 18px;
+		font-size: 21px;
 	}
 
 	th,

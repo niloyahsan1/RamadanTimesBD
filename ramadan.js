@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function formatBanglaTime(h, m, s) {
-		return `${toBangla(h)} ঘন্টা ${toBangla(m)} মিনিট ${toBangla(s)} সেকেন্ড`;
+		const pad = (num) => num.toString().padStart(2, '0');
+		return `${toBangla(pad(h))}:${toBangla(pad(m))}:${toBangla(pad(s))}`;
 	}
 
 	function formatBanglaDate(dateStr) {
