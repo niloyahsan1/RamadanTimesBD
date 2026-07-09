@@ -13,25 +13,35 @@
 
   <link rel="stylesheet" href="styles.css">
   <!-- <script src="wholeYear.js" defer></script> -->
+  <script src="main.js" defer></script>
   <script src="ramadan.js" defer></script>
 </head>
 
 <body>
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+  </script>
 
   <!-- ------------------ NAVBAR ------------------ -->
   <nav class="navbar">
     <div class="nav-container">
-      <div id="currentTime" class="nav-item"></div>
-      <button class="nav-item"><a href="https://github.com/niloyahsan1/RamadanTimesBD" target="_blank">Ramadan Times BD
-          2026</a></button>
-      <button id="darkToggle" class="nav-item icon-btn" aria-label="Toggle dark mode">
-        <span id="themeIcon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21 12.79A9 9 0 0 1 11.21 3c0-.34.02-.67.05-1A9 9 0 1 0 22 13.74c-.33.03-.66.05-1 .05z" />
-          </svg>
-        </span>
-      </button>
-
+      <div class="nav-left">
+        <a href="index.html" class="nav-item active">রমজান</a>
+        <a href="prayer.html" class="nav-item">নামাজ</a>
+        <a href="tasbih.html" class="nav-item">তাসবিহ</a>
+      </div>
+      <div class="nav-right">
+        <div id="currentTime" class="nav-item"></div>
+        <button id="darkToggle" class="nav-item icon-btn" aria-label="Toggle dark mode">
+          <span id="themeIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21 12.79A9 9 0 0 1 11.21 3c0-.34.02-.67.05-1A9 9 0 1 0 22 13.74c-.33.03-.66.05-1 .05z" />
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
   </nav>
 

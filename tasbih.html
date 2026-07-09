@@ -7,229 +7,58 @@
     <title>Tasbih</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: "Inter", sans-serif;
-            background: #f3f5f2;
-            color: #2f2f2f;
-            padding-top: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* NAVBAR */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(243, 245, 242, 0.6);
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .nav-container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-left {
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav-item {
-            font-weight: 600;
-            font-size: 15px;
-            padding: 10px 18px;
-            border-radius: 100px;
-            border: 0px solid #cbd5c0;
-            background: linear-gradient(180deg,
-                    rgba(232, 239, 230, 0.7) 0%,
-                    rgba(215, 226, 212, 0.7) 100%);
-            text-decoration: none;
-            cursor: pointer;
-            color: #3f7d3a;
-        }
-
-        .nav-item.active {
-            background: #3f7d3a;
-            color: white;
-        }
-
-        .icon-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        /* PROGRESS RING */
-        .progress-ring {
-            position: relative;
-            width: 280px;
-            height: 280px;
-            /* margin: auto; */
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-        }
-
-        svg {
-            transform: rotate(-90deg);
-        }
-
-        circle {
-            fill: none;
-            stroke-width: 12;
-            stroke-linecap: round;
-        }
-
-        .bg {
-            stroke: #d7e2d4;
-        }
-
-        .progress {
-            stroke: #3f7d3a;
-            stroke-dasharray: 754;
-            stroke-dashoffset: 754;
-            transition: stroke-dashoffset 0.25s ease;
-        }
-
-        .circle-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 100%;
-            pointer-events: none;
-        }
-
-        .zikr {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .count {
-            font-size: 28px;
-            font-weight: 700;
-            color: #3f7d3a;
-        }
-
-        .reset-btn {
-            margin-top: 30px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            background: #3f7d3a;
-            color: white;
-            cursor: pointer;
-        }
-
-        .complete-msg {
-            margin-top: 20px;
-            font-weight: 600;
-            color: #3f7d3a;
-            display: none;
-        }
-
-        /* DISABLED STATE */
-        .disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* DARK MODE */
-        body.dark {
-            background: #111510;
-            color: #C4C4C4;
-        }
-
-        body.dark .navbar {
-            background: rgba(17, 21, 16, 0.8);
-            border-bottom: 1px solid #1f2a1f;
-        }
-
-        body.dark .nav-item {
-            background: rgba(28, 51, 35, 0.8);
-            color: #C4C4C4;
-        }
-
-        body.dark .nav-item.active {
-            background: #4ea34f;
-            color: white;
-        }
-
-        body.dark .progress {
-            stroke: #4ea34f;
-        }
-
-        body.dark .count {
-            color: #4ea34f;
-        }
-
-        body.dark .reset-btn {
-            background: #4ea34f;
-        }
-
-        body.dark .complete-msg {
-            color: #4ea34f;
-        }
-
-        @media(max-width:600px) {
-            .progress-ring {
-                width: 230px;
-                height: 230px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
 
 <body>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
+    </script>
 
     <div class="navbar">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="index.html" class="nav-item">Ramadan</a>
-                <a href="prayer.html" class="nav-item">Prayer</a>
-                <a href="tasbih.html" class="nav-item active">Tasbih</a>
+                <a href="index.html" class="nav-item">রমজান</a>
+                <a href="prayer.html" class="nav-item">নামাজ</a>
+                <a href="tasbih.html" class="nav-item active">তাসবিহ</a>
             </div>
-
-            <button id="darkToggle" class="nav-item icon-btn" aria-label="Toggle dark mode">
-                <span id="themeIcon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M21 12.79A9 9 0 0 1 11.21 3c0-.34.02-.67.05-1A9 9 0 1 0 22 13.74c-.33.03-.66.05-1 .05z" />
-                    </svg>
-                </span>
-            </button>
-
+            <div class="nav-right">
+                <div id="currentTime" class="nav-item"></div>
+                <button id="darkToggle" class="nav-item icon-btn" aria-label="Toggle dark mode">
+                    <span id="themeIcon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 12.79A9 9 0 0 1 11.21 3c0-.34.02-.67.05-1A9 9 0 1 0 22 13.74c-.33.03-.66.05-1 .05z" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
         </div>
     </div>
 
     <div class="container">
 
-        <h2>তাসবিহ</h2>
+        <h2>ডিজিটাল তাসবিহ</h2>
 
-        <div class="progress-ring" id="circle">
+        <!-- Session Statistics -->
+        <div class="tasbih-stats">
+            <div class="tasbih-stats-card">
+                <div class="label">আজকের মোট জিকর</div>
+                <div class="value" id="sessionTotal">০</div>
+            </div>
+            <div class="tasbih-stats-card">
+                <div class="label">বর্তমান চক্র</div>
+                <div class="value" id="cycleTotal">১ম</div>
+            </div>
+        </div>
+
+        <!-- Zikr Selector Tabs -->
+        <div class="zikr-tabs" id="zikrTabs"></div>
+
+        <!-- Progress Ring Tapper -->
+        <div class="progress-ring" id="circle" title="জপ করতে এখানে চাপুন">
             <svg width="280" height="280">
                 <circle class="bg" cx="140" cy="140" r="120" />
                 <circle class="progress" id="progressCircle" cx="140" cy="140" r="120" />
@@ -237,58 +66,45 @@
 
             <div class="circle-content">
                 <div class="zikr" id="zikrText">সুবহানাল্লাহ</div>
+                <div class="zikr-meaning" id="zikrMeaning">আল্লাহ অতি পবিত্র ও মহিমান্বিত</div>
                 <div class="count" id="counter">0/৩৩</div>
             </div>
         </div>
 
         <div class="complete-msg" id="completeMsg">
-            আলহামদুলিল্লাহ! ১০০ তাসবিহ সম্পন্ন হয়েছে 🤍
+            আলহামদুলিল্লাহ! ১০০টি জিকর চক্র সম্পূর্ণ হয়েছে 🤍
         </div>
 
-        <button class="reset-btn" id="resetBtn">রিসেট</button>
+        <!-- Reset Button -->
+        <button class="reset-btn" id="resetBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rotate-ccw"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            কাউন্টার রিসেট করুন
+        </button>
 
     </div>
 
     <script>
-        /* ---------- DARK MODE ---------- */
-        const darkBtn = document.getElementById("darkToggle");
-        const themeIcon = document.getElementById("themeIcon");
-
-        darkBtn.addEventListener("click", () => {
-            document.body.classList.toggle("dark");
-
-            if (document.body.classList.contains("dark")) {
-                // Sun icon
-                themeIcon.innerHTML = `
-			<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-				<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.45 0l1.42 1.42 1.79-1.8-1.41-1.41-1.8 1.79zM12 4V1h-1v3h1zm0 19v-3h-1v3h1zm8-11h3v-1h-3v1zM1 12h3v-1H1v1zm15.24 6.16l1.8 1.79 1.41-1.41-1.79-1.8-1.42 1.42zM4.22 18.36l-1.79 1.8 1.41 1.41 1.8-1.79-1.42-1.42zM12 6a6 6 0 100 12 6 6 0 000-12z"/>
-			</svg>
-		`;
-            } else {
-                // Moon icon
-                themeIcon.innerHTML = `
-			<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-				<path d="M21 12.79A9 9 0 0 1 11.21 3c0-.34.02-.67.05-1A9 9 0 1 0 22 13.74c-.33.03-.66.05-1 .05z"/>
-			</svg>
-		`;
-            }
-        });
-
         const zikrList = [
-            { name: "সুবহানাল্লাহ", max: 33 },
-            { name: "আলহামদুলিল্লাহ", max: 33 },
-            { name: "আল্লাহু আকবার", max: 34 }
+            { name: "সুবহানাল্লাহ", max: 33, meaning: "আল্লাহ অতি পবিত্র ও মহিমান্বিত" },
+            { name: "আলহামদুলিল্লাহ", max: 33, meaning: "সকল প্রশংসা একমাত্র আল্লাহর জন্য" },
+            { name: "আল্লাহু আকবার", max: 34, meaning: "আল্লাহ সবচেয়ে মহান ও সর্বশ্রেষ্ঠ" }
         ];
 
         let currentZikr = 0;
         let count = 0;
+        let sessionTotal = 0;
+        let cycleTotal = 1;
         let isCompleted = false;
 
         const circle = document.getElementById("circle");
         const zikrText = document.getElementById("zikrText");
+        const zikrMeaning = document.getElementById("zikrMeaning");
         const counter = document.getElementById("counter");
         const progressCircle = document.getElementById("progressCircle");
         const completeMsg = document.getElementById("completeMsg");
+        const zikrTabsContainer = document.getElementById("zikrTabs");
+        const sessionTotalEl = document.getElementById("sessionTotal");
+        const cycleTotalEl = document.getElementById("cycleTotal");
 
         const circumference = 2 * Math.PI * 120;
         progressCircle.style.strokeDasharray = circumference;
@@ -298,6 +114,22 @@
             return num.toString().split("").map(d => map[d] ?? d).join("");
         }
 
+        function renderTabs() {
+            let tabsHtml = "";
+            zikrList.forEach((z, idx) => {
+                const activeClass = idx === currentZikr ? "active" : "";
+                tabsHtml += `<button class="tab-btn ${activeClass}" onclick="switchZikr(${idx})">${z.name}</button>`;
+            });
+            zikrTabsContainer.innerHTML = tabsHtml;
+        }
+
+        window.switchZikr = function(idx) {
+            if (isCompleted) return;
+            currentZikr = idx;
+            count = 0;
+            updateUI();
+        };
+
         function updateProgress() {
             const max = zikrList[currentZikr].max;
             const percent = count / max;
@@ -306,33 +138,41 @@
         }
 
         function updateUI() {
-            const max = zikrList[currentZikr].max;
-            zikrText.innerText = zikrList[currentZikr].name;
-            counter.innerText = `${toBangla(count)}/${toBangla(max)}`;
+            const zikr = zikrList[currentZikr];
+            zikrText.innerText = zikr.name;
+            zikrMeaning.innerText = zikr.meaning;
+            counter.innerText = `${toBangla(count)}/${toBangla(zikr.max)}`;
+            sessionTotalEl.innerText = toBangla(sessionTotal);
+            cycleTotalEl.innerText = `${toBangla(cycleTotal)}ম`;
             updateProgress();
+            renderTabs();
         }
 
         circle.addEventListener("click", () => {
-
-            if (isCompleted) return;  // STOP when completed
+            if (isCompleted) return;
 
             count++;
+            sessionTotal++;
 
             if (navigator.vibrate) {
-                navigator.vibrate(30);
+                navigator.vibrate(35);
             }
 
             const max = zikrList[currentZikr].max;
 
-            if (count > max) {
-                currentZikr++;
-                count = 0;
-
-                if (currentZikr >= zikrList.length) {
+            if (count >= max) {
+                if (currentZikr === zikrList.length - 1) {
+                    // Completed cycle (100 counts)
+                    count = max;
+                    updateUI();
                     isCompleted = true;
                     completeMsg.style.display = "block";
                     circle.classList.add("disabled");
                     return;
+                } else {
+                    // Auto advance to next zikr
+                    currentZikr++;
+                    count = 0;
                 }
             }
 
@@ -342,12 +182,15 @@
         document.getElementById("resetBtn").addEventListener("click", () => {
             currentZikr = 0;
             count = 0;
+            sessionTotal = 0;
+            cycleTotal = 1;
             isCompleted = false;
             completeMsg.style.display = "none";
             circle.classList.remove("disabled");
             updateUI();
         });
 
+        // Initialize
         updateUI();
     </script>
 
