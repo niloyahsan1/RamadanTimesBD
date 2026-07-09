@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daily Prayer Times – Dhaka</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===============================
+   BASE
+================================ */
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: #f3f5f2;
+            color: #2f2f2f;
+            padding-top: 70px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        /* ===============================
+   NAVBAR
+================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(243, 245, 242, 0.4);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-item {
+            font-weight: 600;
+            font-size: 15px;
+            padding: 10px 18px;
+            border-radius: 100px;
+            border: 0px solid #cbd5c0;
+            background: linear-gradient(180deg,
+                    rgba(232, 239, 230, 0.7) 0%,
+                    rgba(215, 226, 212, 0.7) 100%);
+            text-decoration: none;
+            cursor: pointer;
+            color: #3f7d3a;
+        }
+
+        .nav-item.active {
+            background: #3f7d3a;
+            color: #fff;
+        }
+
+        .icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===============================
+   CARD
+================================ */
+        .card {
+            background: linear-gradient(180deg, #e8efe6 0%, #d7e2d4 100%);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 480px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 17px;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .time {
+            font-weight: 600;
+            color: #3f7d3a;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        .current {
+            background: #4ea34f;
+            color: white;
+        }
+
+        .next {
+            background: #b91c1c;
+            color: white;
+        }
+
+        /* ===============================
+   DARK MODE
+================================ */
+        body.dark {
+            background: #111510;
+            color: #C4C4C4;
+        }
+
+        body.dark .navbar {
+            background: rgba(17, 21, 16, 0.8);
+            border-bottom: 1px solid #1f2a1f;
+        }
+
+        body.dark .nav-item {
+            background: rgba(28, 51, 35, 0.8);
+            color: #C4C4C4;
+        }
+
+        body.dark .nav-item.active {
+            background: #4ea34f;
+            color: #fff;
+        }
+
+        body.dark .card {
+            background: #1D231D;
+        }
+
+        body.dark .time {
+            color: #4ea34f;
+        }
+
+        /* ===============================
+   RESPONSIVE
+================================ */
+        @media(max-width:600px) {
+            h2 {
+                font-size: 22px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            li {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-container">
+
+            <div class="nav-left">
+                <a href="index.html" class="nav-item">Ramadan</a>
+                <a href="prayer.html" class="nav-item active">Prayer</a>
+                <a href="tasbih.html" class="nav-item">Tasbih</a>
+            </div>
+
+            <button id="darkToggle" class="nav-item icon-btn" aria-label="Toggle dark mode">
+                <span id="themeIcon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M21 12.79A9 9 0 0 1 11.21 3c0-.34.02-.67.05-1A9 9 0 1 0 22 13.74c-.33.03-.66.05-1 .05z" />
+                    </svg>
+                </span>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>আজকের নামাজের সময়</h2>
+            <ul id="times">লোড হচ্ছে...</ul>
+        </div>
+    </div>
+
+    <script>
+        /* ---------- DARK MODE ---------- */
+        const darkBtn = document.getElementById("darkToggle");
+        const themeIcon = document.getElementById("themeIcon");
+
+        darkBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+
+            if (document.body.classList.contains("dark")) {
+                // Sun icon
+                themeIcon.innerHTML = `
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.45 0l1.42 1.42 1.79-1.8-1.41-1.41-1.8 1.79zM12 4V1h-1v3h1zm0 19v-3h-1v3h1zm8-11h3v-1h-3v1zM1 12h3v-1H1v1zm15.24 6.16l1.8 1.79 1.41-1.41-1.79-1.8-1.42 1.42zM4.22 18.36l-1.79 1.8 1.41 1.41 1.8-1.79-1.42-1.42zM12 6a6 6 0 100 12 6 6 0 000-12z"/>
+			</svg>
+		`;
+            } else {
+                // Moon icon
+                themeIcon.innerHTML = `
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M21 12.79A9 9 0 0 1 11.21 3c0-.34.02-.67.05-1A9 9 0 1 0 22 13.74c-.33.03-.66.05-1 .05z"/>
+			</svg>
+		`;
+            }
+        });
+
+        /* ---------- HELPERS ---------- */
+        function to12(time24) {
+            let [h, m] = time24.split(":");
+            h = parseInt(h);
+            let ap = h >= 12 ? "PM" : "AM";
+            h = h % 12 || 12;
+            return `${h}:${m} ${ap}`;
+        }
+
+        function toBangla(num) {
+            const map = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+            return num.toString().split("").map(d => map[d] ?? d).join("");
+        }
+
+        function parseTime(t) {
+            const [h, m] = t.split(":");
+            const d = new Date();
+            d.setHours(h, m, 0, 0);
+            return d;
+        }
+
+        /* ---------- FETCH PRAYER TIMES ---------- */
+        fetch("https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=1&school=1")
+            .then(res => res.json())
+            .then(data => {
+
+                const t = data.data.timings;
+
+                const prayers = [
+                    { name: "ফজর", time: t.Fajr },
+                    { name: "সূর্যোদয়", time: t.Sunrise },
+                    { name: "যোহর", time: t.Dhuhr },
+                    { name: "আসর", time: t.Asr },
+                    { name: "মাগরিব", time: t.Maghrib },
+                    { name: "এশা", time: t.Isha }
+                ];
+
+                const now = new Date();
+
+                let currentIndex = -1;
+                let nextIndex = -1;
+
+                for (let i = 0; i < prayers.length; i++) {
+                    const start = parseTime(prayers[i].time);
+                    const next = i < prayers.length - 1 ? parseTime(prayers[i + 1].time) : null;
+
+                    if (now >= start && (!next || now < next)) {
+                        currentIndex = i;
+                        nextIndex = i + 1 < prayers.length ? i + 1 : -1;
+                        break;
+                    }
+                }
+
+                if (currentIndex === -1) {
+                    nextIndex = 0;
+                }
+
+                let html = "";
+
+                prayers.forEach((p, i) => {
+
+                    let badge = "";
+
+                    if (i === currentIndex) {
+                        badge = `<span class="badge current">চলমান</span>`;
+                    } else if (i === nextIndex) {
+                        badge = `<span class="badge next">পরবর্তী</span>`;
+                    }
+
+                    html += `
+		<li>
+			<span>${p.name} ${badge}</span>
+			<span class="time">${toBangla(to12(p.time))}</span>
+		</li>`;
+                });
+
+                document.getElementById("times").innerHTML = html;
+
+            });
+    </script>
+
+</body>
+
+</html>
